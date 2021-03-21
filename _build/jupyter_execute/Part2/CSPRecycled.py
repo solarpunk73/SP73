@@ -5,7 +5,12 @@
 
 # Idée en cours d'amélioration. L'objectif serait de s'inspirer de la [LyteFire](https://lytefire.com/en), poussée également par [SolarFire](https://solar-fire-france.fr/). La photo suivante est tirée de leur site web:
 
-# <img src="../images/Lytefire.png" alt="lytefire" style="width: 800px;"/>
+# ```{image} ../images/Lytefire.png
+# :alt: lytefire
+# :class: bg-primary mb-1
+# :width: 800px
+# :align: center
+# ```
 
 # ## Plastique recyclé
 
