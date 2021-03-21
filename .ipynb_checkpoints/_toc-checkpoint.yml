@@ -1,0 +1,32 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+
+- file: intro
+  numbered: false
+- part: Faire un livre avec Jupyter
+  numbered: false
+  chapters:
+  - file: Part1/NoteBookTuto
+  - file: Part1/BookTuto
+- part: Tracer des courbes via Plotly et Cufflinks
+  numbered: false
+  chapters:
+  - file: Part2/Explications
+  - file: Part2/ExempleDay
+- part: Introduction à l'Energie solaire
+  numbered: false
+  chapters:
+  - file: Part3/IntroEnergie
+  - file: Part3/EmplacementSoleil
+  - file: Part3/Irradiation
+  - file: Part3/LowT
+  - file: Part3/MediumT
+  - file: Part3/HighT
+- part: Low-tech/Maison
+  numbered: false
+  chapters:
+  - file: Part4/PV&ChargeBasique
+  - file: Part4/SolaireActif
+  - file: Part4/SolairePassif
+  - file: Part4/SolarPunk

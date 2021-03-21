@@ -1,0 +1,27 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+
+- file: intro
+  numbered: false
+- part: Idées & Association
+  numbered: false
+  chapters:
+  - file: Part1/SolarPunk
+  - file: Part1/Asso
+- part: Objectifs, réalisations & idées
+  numbered: false
+  chapters:
+  - file: Part2/SolarBeer
+  - file: Part2/CSPRecycled
+  - file: Part2/SolairePassif
+  - file: Part2/PV&ChargeBasique
+- part: Introduction à l'Energie solaire
+  numbered: false
+  chapters:
+  - file: Part3/IntroEnergie
+  - file: Part3/EmplacementSoleil
+  - file: Part3/Irradiation
+  - file: Part3/LowT
+  - file: Part3/MediumT
+  - file: Part3/HighT
