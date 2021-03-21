@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solaire passif &#8212; SolarPunk Savoie</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Faire un système Photovoltaïque Maison" href="PV&amp;ChargeBasique.html" />
+    <link rel="prev" title="Concentration solaire avec du plastique recyclé" href="CSPRecycled.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/solarPunkLogo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">SolarPunk Savoie</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   SolarPunk Savoie
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Idées &amp; Association
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part1/SolarPunk.html">
+   SolarPunk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part1/Asso.html">
+   Association
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Objectifs, réalisations &amp; idées
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="SolarBeer.html">
+   Bière solaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CSPRecycled.html">
+   Concentration solaire avec du plastique recyclé
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Solaire passif
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PV&amp;ChargeBasique.html">
+   Faire un système Photovoltaïque Maison
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Introduction à l'Energie solaire
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part3/IntroEnergie.html">
+   Notions utiles de l’Energie
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part3/EmplacementSoleil.html">
+   Décrire l’emplacement du soleil
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part3/Irradiation.html">
+   L’irradiation solaire
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part3/LowT.html">
+   Basses Températures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Part3/HighT.html">
+   La Concentration Ponctuelle
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Part2/SolairePassif.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/solarPunk73/solarPunk73"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/solarPunk73/solarPunk73/issues/new?title=Issue%20on%20page%20%2FPart2/SolairePassif.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/solarPunk73/solarPunk73/edit/main/Part2/SolairePassif.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#organisation-de-l-espace-de-vie">
+   Organisation de l’espace de vie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dissymetrie-hiver-ete">
+   Dissymétrie Hiver/Eté
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reflecteurs-et-usages-du-toit">
+   Réflecteurs et usages du toit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mur-d-eau-inertie-thermique">
+   Mur d’eau &amp; Inertie thermique
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#serres-attenantes-enterrees">
+   Serres attenantes, enterrées
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="solaire-passif">
+<h1>Solaire passif<a class="headerlink" href="#solaire-passif" title="Permalink to this headline">¶</a></h1>
+<p>Le solaire passif est une solution à la problématique de chauffage. En effet, les apports du soleil sont immenses: une fenêtre plein sud, comme chacun le sait, permettra de se chauffer l’hiver. Il est néanmoins nécessaire de faire un paresoleil afin de ne pas chauffer en été. Cette dyssimétrie entre le besoin et la disponibilité de l’énergie implique une grande réflexion du bâtiment. De nombreux travaux sont menés à l’INES et au sein d’INES Formation, ces derniers étant bien plus à même de répondre à des questions précises sur le sujet.</p>
+<p>Le SolarPunk est un mouvement d’imagination; nous souhaitons donc donner du rêve ici, car les possibilités sont grandes et fondamentalement intéressantes: la société a besoin d’un mythe, le SolarPunk est une des réponses!</p>
+<p>Nous allons ici partager et commenter un certain nombre de scan du livre <strong>Le Guide de l’Energie Solaire</strong>, de E. Mazria, publié en 1975. Des concepts très intéressants y sont décrits, ainsi que des solutions de calcul pour tout un chacun. Preuve, s’il en est, que tout est déjà réfléchi et calculé - il ne reste plus qu’une motivation politique (et donc sociétale) pour les mettre en place. Nous présentons ici quelques-uns de ces concepts.</p>
+<div class="section" id="organisation-de-l-espace-de-vie">
+<h2>Organisation de l’espace de vie<a class="headerlink" href="#organisation-de-l-espace-de-vie" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title">Organisation de la maison</p>
+<p>Une organisation logique permet un gain d’énergie solaire utile: situer les pièces de vie au sud, où le chauffage solaire est assuré en hiver, permet de diminuer la nécessité d’un chauffage d’appoint.</p>
+</div>
+<img src="../images/Guide/OrgMaison.jpg" alt="organisation de la maison" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Répartition des fenêtres</p>
+<p>Nous pouvons voir ici une idée de répartition des fenêtres, assurant un meilleur chauffage.</p>
+</div>
+<img src="../images/Guide/OrgFenetre.jpg" alt="organisation de la maison" style="width: 400px;"/></div>
+<div class="section" id="dissymetrie-hiver-ete">
+<h2>Dissymétrie Hiver/Eté<a class="headerlink" href="#dissymetrie-hiver-ete" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title">Elevation</p>
+<p>Le soleil change de hauteur dans le ciel, de par le mouvement de la Terre. Au solstice de printemps et d’automne, à midi heure solaire, il se trouve à un angle d’élevation égal à 90° - latitude. En France, c’est donc environ 45°. Il bougera ensuite, par rapport à cette position, de +23.5° (solstice d’été) à -23.5° (solstice d’hiver).</p>
+</div>
+<img src="../images/Guide/elevation.jpg" alt="organisation de la maison" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Position dans le ciel</p>
+<p>Connaitre la position du soleil s’avère très pratique dans de nombreux cas (perdu dans la forêt, solaire passif, actif, ..). Voici un graphique de sa position et une façon utile de le présenter, entre azimuth et élévation.</p>
+</div>
+<img src="../images/Guide/PositionSoleil.jpg" alt="Position du Soleil" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Eté et hiver</p>
+<p>Il ne faut pas chauffer en été, c’est même plutôt l’inverse. Cette illustration montre comment le changement de position du soleil doit être utilisé et connu pour bien disposer ses claires-voies.</p>
+</div>
+<img src="../images/Guide/DyssimEteHiver.jpg" alt="Angles" style="width: 400px;"/></div>
+<div class="section" id="reflecteurs-et-usages-du-toit">
+<h2>Réflecteurs et usages du toit<a class="headerlink" href="#reflecteurs-et-usages-du-toit" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title">Réflecteurs sur toit</p>
+<p>L’usage de ces réflecteurs est triple: en hiver, de jour, il permet de gagner de l’énergie solaire en entrée direct. En hiver, de nuit, il sert d’isolant; en été, de jour, il sert de protection solaire.</p>
+</div>
+<img src="../images/Guide/ReflToit.jpg" alt="Murs capteurs " style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Claires-voies et lanterneaus</p>
+<p>Apport direct par le toit; la claire-voie permet de gérer la différence été/hiver. Le lanterneau lui nécessite la disposition d’un protecteur solaire.</p>
+</div>
+<img src="../images/Guide/ClaireVoieLanterneau.jpg" alt="Claire voie et lanterneau" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Toits Bassins</p>
+<p>Mettre un bassin sur son toit est à bien réfléchir en amont! Mais les avantages sont non négligeables, de par l’inertie thermique très élevée de l’eau.</p>
+</div>
+<img src="../images/Guide/ToitBassinconcept.jpg" alt="Murs capteurs " style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Autres dispositions</p>
+<p>Il est possible de mettre le bassin en intérieur, et de le chauffer par une claire-voie. Une petite piscine serait-elle envisageable?</p>
+</div>
+<img src="../images/Guide/bassinToit.jpg" alt="Bassins toit" style="width: 400px;"/></div>
+<div class="section" id="mur-d-eau-inertie-thermique">
+<h2>Mur d’eau &amp; Inertie thermique<a class="headerlink" href="#mur-d-eau-inertie-thermique" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title">Murs capteurs</p>
+<p>Les murs capteurs vont stocker l’énergie solaire, grâce à leur inertie thermique. Des calculs précis sont nécessaires, car il existe une taille optimale du mur, entre conduction et inertie.
+Les murs d’eau ont une très grande inertie: l’eau est le matériau avec la plus grande inertie par kilogrammes, <span class="math notranslate nohighlight">\(C_p = 4187 J/kg.°C\)</span></p>
+</div>
+<img src="../images/Guide/MurCapteur.jpg" alt="Murs capteurs " style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Chauffage</p>
+<p>Ici, le soleil chauffe un mur d’eau intérieur par le biais d’une claire-voie.</p>
+</div>
+<img src="../images/Guide/MurEauChauffe.jpg" alt="Mur d'eau en intérieur" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Stockage</p>
+<p>Il y a de nombreuses solutions de stockage par inertie thermique. en voici quelques-unes. en dehors du mur capteur/accumulateur, nous pouvons également voir un stockage actif: des galets, chauffés par le soleil, dont la chaleur est récupérée par l’utilisation d’un ventilateur.</p>
+</div>
+<img src="../images/Guide/StockageDirect.jpg" alt="Stoquer" style="width: 400px;"/></div>
+<div class="section" id="serres-attenantes-enterrees">
+<h2>Serres attenantes, enterrées<a class="headerlink" href="#serres-attenantes-enterrees" title="Permalink to this headline">¶</a></h2>
+<p>Les serres permettent énormément de choses. Entre autre, une serre attenante permettra un chauffage partiel de la maison: moins efficace qu’une fenêtre pour chauffer la maison, mais avec un gain d’espace pour la pousse de végétaux. D’autant plus que la chauffe de la maison permettra de tenir la serre un peu plus chaude qu’isolée.</p>
+<div class="margin sidebar">
+<p class="sidebar-title">Serre et inertie</p>
+<p>On peut voir ici une serre attenante, avec l’utilisation d’un système de stockage par galets et courant d’air.</p>
+</div>
+<img src="../images/Guide/StockageSerre.jpg" alt="Stockage Serre" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Serre enfouie</p>
+<p>On peut voir ici une serre enfouie côté nord, ce qui permet une isolation simple et rapide.</p>
+</div>
+<img src="../images/Guide/SerreEnfouie.jpg" alt="Serre Enfouie" style="width: 400px;"/><div class="margin sidebar">
+<p class="sidebar-title">Serre avec inertie</p>
+<p>Une serre avec de l’inertie n’aura pas besoin de stockage d’appoint. Voici une disposition possible.</p>
+</div>
+<img src="../images/Guide/SerreStockage.jpg" alt="Serre Stockante" style="width: 400px;"/></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Part2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="CSPRecycled.html" title="previous page">Concentration solaire avec du plastique recyclé</a>
+    <a class='right-next' id="next-link" href="PV&amp;ChargeBasique.html" title="next page">Faire un système Photovoltaïque Maison</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SolarPunk 73<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
