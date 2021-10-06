@@ -1,12 +1,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Concentration Linéaire &#8212; SolarPunk Savoie</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -18,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,38 +31,39 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-
+    <link rel="next" title="La Concentration Ponctuelle" href="HighT.html" />
+    <link rel="prev" title="Basses Températures" href="LowT.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -73,32 +72,36 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/solarPunkLogo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">SolarPunk Savoie</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/solarPunkLogo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SolarPunk Savoie</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
    SolarPunk Savoie
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Idées &amp; Association
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../Part1/SolarPunk.html">
    SolarPunk
@@ -110,12 +113,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Objectifs, réalisations &amp; idées
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../Part2/SolarBeer.html">
    Bière solaire
@@ -132,17 +135,17 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Part2/PV&amp;ChargeBasique.html">
+  <a class="reference internal" href="../Part2/PV%26ChargeBasique.html">
    Faire un système Photovoltaïque Maison
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction à l'Energie solaire
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="IntroEnergie.html">
    Notions utiles de l’Energie
@@ -163,6 +166,11 @@
    Basses Températures
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   La Concentration Linéaire
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="HighT.html">
    La Concentration Ponctuelle
@@ -170,6 +178,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -185,21 +194,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -217,7 +226,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -237,20 +246,135 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description-generale">
+   Description générale
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-parabolique-ptc">
+     Le Parabolique (PTC)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-fresnel-lineaire-lfr">
+     Le Fresnel Linéaire (LFR)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#le-parabolique-fixe">
+     Le parabolique fixe
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#efficacite-optique">
+   Efficacité Optique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#description-de-la-position-du-collecteur">
+     Description de la position du collecteur
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculs-de-changement-de-base">
+       Calculs de changement de base
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#position-du-soleil-relativement-au-capteur">
+     Position du soleil relativement au capteur
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#effet-cosinus">
+     Effet cosinus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iam-incidence-angle-modifyer">
+     IAM - Incidence Angle Modifyer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ombrage">
+     Ombrage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reflectivite">
+     Réflectivité
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion-sur-l-efficacite-optique">
+     Conclusion sur l’efficacité optique
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bilan-thermique">
+   Bilan thermique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilan-1d">
+     Bilan 1D
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bilan-0d">
+     Bilan 0D
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#la-puissance-en-entree-p-in">
+       La puissance en entrée
+       <span class="math notranslate nohighlight">
+        \(P_{in}\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#la-puissance-utile-p-utile">
+       La puissance utile
+       <span class="math notranslate nohighlight">
+        \(P_{utile}\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -260,6 +384,137 @@
                 
   <div class="section" id="la-concentration-lineaire">
 <h1>La Concentration Linéaire<a class="headerlink" href="#la-concentration-lineaire" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description-generale">
+<h2>Description générale<a class="headerlink" href="#description-generale" title="Permalink to this headline">¶</a></h2>
+<p>La concentration linéaire consiste à concentrer le soleil sur un long tube: des miroirs, dans la longueur, réfléchissent sur un tube. Comme le soleil bouge en deux dimensions, et que le récepteur (eg., le tube), a une dimension, il faut que les collecteurs (eg., les miroirs) bougent en une dimension, si l’on souhaite obtenir une bonne visée. Ces technologies solaires permettent de monter, au niveau industriel, à 400°C/500°C. Il en existe deux types motorisés (permettant une bonne visée), ainsi qu’une adaptation fixe, moins efficace et ne nécessitant pas de moteur.</p>
+<div class="section" id="le-parabolique-ptc">
+<h3>Le Parabolique (PTC)<a class="headerlink" href="#le-parabolique-ptc" title="Permalink to this headline">¶</a></h3>
+<p><img alt="PTC - Vient de:https://www.modelon.com/dynamic-modeling-of-a-parabolic-trough-solar-thermal-power-plant-with-thermal-storage-using-modelons-thermal-power-library/" src="../_images/PTC.PNG" /></p>
+<p>Le concentrateur parabolique (en anglais: <em>parabolic trough collector</em>, ou encore PTC) est consituté d’un miroir parabolique réfléchissant sur un tube isolé. De par la forme des miroirs, c’est la technologie de concentration linéaire atteignant les plus hauts rendements optiques, et donc les plus fortes concentrations/efficacités/températures.</p>
+<p>Néanmoins, la forme des miroirs est complexe à fabriquer, et faire tourner l’intégralité du collecteur crée de véritables problèmes de structures, ainsi que de prises au vent. C’est pourquoi des alternatives moins chers ont été recherchés, comme le Fresnel Linéaire ci-dessous.</p>
+</div>
+<div class="section" id="le-fresnel-lineaire-lfr">
+<h3>Le Fresnel Linéaire (LFR)<a class="headerlink" href="#le-fresnel-lineaire-lfr" title="Permalink to this headline">¶</a></h3>
+<p><img alt="LFR - Vient de:https://www.researchgate.net/figure/Illustration-of-compact-linear-Fresnel-reflector-CLFR-Courtesy-of-Department-of_fig16_308463774" src="../_images/LFR.PNG" /></p>
+<p>Le Fresnel Linéaire (en anglais <em>Linear Fresnel</em>, ou encore LFR), est constitué de multiples miroirs réfléchissant tous vers l’absorbeur situé au dessus. Dans cette configuration, le tube est fixe, et les miroirs plus petits. Il faut néanmoins plus de moteurs pour le faire tourner. Un deuxième réflecteur est situé au-dessus du tube afin de rattraper ce qui rate le tube.</p>
+<p>L’idée est inspiré des <a class="reference external" href="https://fr.wikipedia.org/wiki/Lentille_de_Fresnel">lentilles Fresnels</a>: considérant qu’il était trop difficile de faire une courbe parfaite pour une loupe et que le poids de la lentille était un problème, Fresnel eut l’idée de casser les arêtes à intervalles réguliers, comme montrés ci-dessous.</p>
+<p><img alt="Vient de: https://fr.wikipedia.org/wiki/Lentille_de_Fresnel" src="../_images/lentille.PNG" /></p>
+</div>
+<div class="section" id="le-parabolique-fixe">
+<h3>Le parabolique fixe<a class="headerlink" href="#le-parabolique-fixe" title="Permalink to this headline">¶</a></h3>
+<p><img alt="CPC - Vient de: https://www.indiamart.com/proddetail/cpc-compound-parabolic-concentrator-20465896148.html" src="../_images/CPC.PNG" /></p>
+<p>L’idée est de réussir à concentrer une partie du soleil sur des petits tubes. Cette technologie se trouve à la lisière entre panneaux plans et concentration linéaire; ne la connaissant pas beaucoup, je ne peux pas trop en parler. Néanmoins, il me semble que l’efficacité est meilleure que sur des panneaux plans – cela doit dépendre également de la quantité d’énergie diffuse, ainsi que bien évidemment de la fabrication.</p>
+</div>
+</div>
+<div class="section" id="efficacite-optique">
+<h2>Efficacité Optique<a class="headerlink" href="#efficacite-optique" title="Permalink to this headline">¶</a></h2>
+<p>Le calcul de l’efficacité optique nécessite de connaître la position du soleil, ainsi que celle du collecteur. Afin de calculer l’efficacité optique, des corrélations donnant le IAM (Incidence Angle Modifyer) sont disponibles. Il faut également prendre en compte l’ombrage entre les rangées, et la réflectivité des miroirs.</p>
+<p>Le calcul de l’efficacité optique se décompose alors en:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta_0\)</span>: c’est l’efficacité optique à incidence normale, lorsque le soleil se trouve face au capteur.</p></li>
+<li><p><strong>Effet cosinus</strong></p></li>
+<li><p><strong>Incidence Angle Modifyer</strong>: les miroirs peuvent réfléchir derrière le tube si le soleil est bas, par exemple. Ces corrélations, données par les constructeurs, permettent une estimation précise du rendement optique. En gros, cela correspond à ce qui est mal visé (ou encore spillage losses)</p></li>
+<li><p><strong>Ombrage</strong>: si le soleil est bas, les lignes de miroirs peuvent se faire de l’ombre à tout un chacun.</p></li>
+<li><p><strong>Réflectivité</strong>: dépend du miroir et de son état (propreté, ..)</p></li>
+</ol>
+<div class="section" id="description-de-la-position-du-collecteur">
+<h3>Description de la position du collecteur<a class="headerlink" href="#description-de-la-position-du-collecteur" title="Permalink to this headline">¶</a></h3>
+<p>La position du collecteur peut être décrite par 3 angles: deux angles permettent de décrire le sol, et un autre angle permettant de décrire la position du collecteur relativement au sol.</p>
+<p><img alt="Crédits: R. Albert" src="../_images/B0_B2_B3.PNG" /></p>
+<p>Le sol peut être défini par son azimuth et son inclination: un angle <span class="math notranslate nohighlight">\(\alpha_{sol} = \alpha_{gr}\)</span>, l’azimuth, correspondant à l’angle entre le nord et le projeté de la normale du sol sur le plan horizontal; un angle <span class="math notranslate nohighlight">\(\beta_{sol}=\beta_{gr}\)</span> correspondant à l’angle entre le sol et l’horizontale.</p>
+<p>De même, on va définir l’azimuth du collecteur par rapport au sol <span class="math notranslate nohighlight">\(\alpha_{col-sol}\)</span> comme l’angle entre le “nord” local (càd, la direction montante) et l’axe du collecteur: en effet, dans la concentration linéaire, il y a un axe évident.</p>
+<p><img alt="Crédits: R. Albert" src="../_images/B1_B2.PNG" /></p>
+<p>Il est également possible de définir l’inclinaison du collecteur <span class="math notranslate nohighlight">\(\beta_{col-sol}\)</span>. Néanmoins, cela ne me semble intéressant que pour les panneaux plans, bien que cela puisse être utile pour d’autres cas, où l’on souhaiterait surélever les collecteurs.</p>
+<p><img alt="Crédits: R. Albert" src="../_images/B0_B4.PNG" /></p>
+<div class="section" id="calculs-de-changement-de-base">
+<h4>Calculs de changement de base<a class="headerlink" href="#calculs-de-changement-de-base" title="Permalink to this headline">¶</a></h4>
+<p>Il y a 3 rotations à effectuer pour arriver dans la base du champ solaire. A partir de cela, il devient alors possible de définir l’orientation du soleil par rapport au collecteur, et d’utiliser les relations génériques donnant l’efficacité optique.</p>
+<p>Les différentes rotations et leurs matrices respectives sont:</p>
+<ol class="simple">
+<li><p>Rotation autour de Z de <span class="math notranslate nohighlight">\(-\alpha_{sol}\)</span>, <span class="math notranslate nohighlight">\(P_{B_0}^{B_1} = \begin{pmatrix} \cos(\alpha_{sol}) &amp; \sin(\alpha_{sol}) &amp; 0 \\ -\sin(\alpha_{sol}) &amp; \cos(\alpha_{sol}) &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p></li>
+<li><p>Rotation autour de X de <span class="math notranslate nohighlight">\(\beta_{sol}\)</span>, <span class="math notranslate nohighlight">\(P_{B_1}^{B_2} = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; \cos(\beta_{sol}) &amp; -\sin(\beta_{sol}) \\ 0 &amp; \sin(\beta_{sol}) &amp; \cos(\beta_{sol}) \end{pmatrix}\)</span></p></li>
+<li><p>Rotation autour de Z de <span class="math notranslate nohighlight">\(-\alpha_{col-sol}\)</span>, <span class="math notranslate nohighlight">\(P_{B_2}^{B_3} = \begin{pmatrix} \cos(\alpha_{col-sol}) &amp; \sin(\alpha_{col-sol}) &amp; 0 \\ -\sin(\alpha_{col-sol}) &amp; \cos(\alpha_{col-sol}) &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}\)</span></p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="position-du-soleil-relativement-au-capteur">
+<h3>Position du soleil relativement au capteur<a class="headerlink" href="#position-du-soleil-relativement-au-capteur" title="Permalink to this headline">¶</a></h3>
+<p>On obtient le vecteur solaire dans la base du champ solaire via <span class="math notranslate nohighlight">\(\vec{s}_3 = P_{B_3}^{B_0} . \vec{s}_0\)</span>. De là, deux angles sont définis: l’angle longitudinal <span class="math notranslate nohighlight">\(\theta_L\)</span> et l’angle transversale <span class="math notranslate nohighlight">\(\theta_T\)</span>. Ces angles correspondent à l’angle entre la verticale et le vecteur solaire projeté dans le plan longitudinal et transversale respectivement. Ces plans sont définis comme tels:</p>
+<ol class="simple">
+<li><p>Plan longitudinal: contient l’axe du capteur et la verticale.</p></li>
+<li><p>Plan transversal: contient la perpendiculaire à l’axe du capteur et la verticale.</p></li>
+</ol>
+<p><img alt="Source:http://www.redrok.com/Fabian_Feldhoff_Linear_Fresnel.pdf" src="../_images/longi.PNG" /></p>
+<p>De cela, il est possible de trouver l’angle longitudinal et transversale. Les deux relations seront:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta_L = \arcsin(s_y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_T = \arcsin(\frac{s_x}{\cos(\theta_L})\)</span></p></li>
+</ol>
+<p>Avec <span class="math notranslate nohighlight">\(s_x,s_y\)</span> les coordonnées du vecteur solaire dans la base du champ solaire.</p>
+<p><strong>Cas particulier du PTC:</strong> Comme le PTC pivote pour se mettre face au soleil, on aura alors toujours <span class="math notranslate nohighlight">\(\theta_T = 0°\)</span>!!</p>
+</div>
+<div class="section" id="effet-cosinus">
+<h3>Effet cosinus<a class="headerlink" href="#effet-cosinus" title="Permalink to this headline">¶</a></h3>
+<p>L’effet cosinus, ainsi désigné car en général calculé à l’aide d’un cosinus, correspond à la part d’énergie solaire reçue par le capteur par rapport à son énergie solaire. Cela revient à l’aire effective vue par le soleil, comme montré dans l’image ci-dessous.</p>
+<p><img alt="Effet cosinus" src="../_images/CosineEffect.PNG" /></p>
+<p>Comme montré sur l’image, cela correspond alors à l’aire vue par le soleil. Cela se ressent très simplement lorsque l’on penche sa main face au soleil, ou encore lorsque l’on sent le soleil taper sur les épaules et le crâne au lieu du corps, et inversement selon l’heure de la journée.</p>
+</div>
+<div class="section" id="iam-incidence-angle-modifyer">
+<h3>IAM - Incidence Angle Modifyer<a class="headerlink" href="#iam-incidence-angle-modifyer" title="Permalink to this headline">¶</a></h3>
+<p>Des corrélations donnent une partie de l’efficacité optique en fonction des angles transversaux et longitudinaux. Il faut ici séparer le cas du Fresnel et du PTC: le IAM du LFR inclue l’effet cosinus, alors que celui du PTC non. Les éléments présents dans le IAM du Fresnel seront les pertes pour problème de visée, d’ombrage entre les lignes, par exemple.</p>
+<p><strong>Cas du LFR:</strong> <span class="math notranslate nohighlight">\(IAMCosine = IAM_L(\theta_L)*IAM_T(\theta_T)\)</span></p>
+<p><strong>Cas du PTC:</strong> <span class="math notranslate nohighlight">\(IAMCosine = IAM_L(\theta_L)*\cos(\theta_L)\)</span></p>
+</div>
+<div class="section" id="ombrage">
+<h3>Ombrage<a class="headerlink" href="#ombrage" title="Permalink to this headline">¶</a></h3>
+<p>L’ombrage se fait entre les lignes du champ solaire: chaque ligne risque de faire de l’ombre à la suivante. Pour le calculer, il est nécessaire de se placer en base 3.</p>
+<p><img alt="Crédits: R. Albert" src="../_images/shadow.PNG" /></p>
+<p>Pour un élément restant plan comme le Fresnel, l’ombrage résultant d’une ligne sur les autres est très petit: lorsque cela arrive, le soleil est presque à l’horizontale, et n’émet pas d’énergies. Le PTC, par contre, se fait de l’ombre.</p>
+<p><span class="math notranslate nohighlight">\(\eta_{ombre}=\frac{e_{SF}}{l_m}*\cos(\theta_T)\)</span></p>
+</div>
+<div class="section" id="reflectivite">
+<h3>Réflectivité<a class="headerlink" href="#reflectivite" title="Permalink to this headline">¶</a></h3>
+<p>La réflectivité du miroir (notée <span class="math notranslate nohighlight">\(\rho\)</span>) dépend principalement du matériau réfléchissant utilisé et de sa propreté. Il est à noter que la réflectivité des métaux dépend de la longueur d’onde: il est donc intéressant d’utiliser un métal réfléchissant dans la longueur d’onde voulue. En général, pour calculer la réflectivité d’un miroir solaire, on aime pondérer par le spectre solaire.</p>
+<p><img alt="Source:https://www.researchgate.net/figure/Reflectivity-of-some-common-metals-versus-wavelength-at-normal-incidence-17_fig7_231103894" src="../_images/reflec.PNG" /></p>
+</div>
+<div class="section" id="conclusion-sur-l-efficacite-optique">
+<h3>Conclusion sur l’efficacité optique<a class="headerlink" href="#conclusion-sur-l-efficacite-optique" title="Permalink to this headline">¶</a></h3>
+<p>La formule finale donnant l’efficacité optique peut s’écrire: <span class="math notranslate nohighlight">\(\eta_{opt}(\vec{s}) = \eta_0 * IAMCosine(\vec{s})*\eta_{ombre}(\vec{s})*\rho\)</span>. Cette forme est néanmoins simplifiée, car d’autres pertes sont régulièrement prises en compte.</p>
+</div>
+</div>
+<div class="section" id="bilan-thermique">
+<h2>Bilan thermique<a class="headerlink" href="#bilan-thermique" title="Permalink to this headline">¶</a></h2>
+<p>Deux bilans thermiques sont généralement effectués, 0D ou 1D. Le degré de précision est bien évidemment meilleur avec le 1D, mais il reste plus difficile à implémenter: pour des calculs rapides, cela n’est pas nécessaire.</p>
+<div class="section" id="bilan-1d">
+<h3>Bilan 1D<a class="headerlink" href="#bilan-1d" title="Permalink to this headline">¶</a></h3>
+<p>Une écriture de l’équation différentielle sur un élément de taille <span class="math notranslate nohighlight">\(dz\)</span> va donner:</p>
+<p><span class="math notranslate nohighlight">\(\dot{m}*(h(z+dz)-h(z)) = \eta_{opt}*\alpha*DNI*l_c*dz - U_{ext}*P_{rec}*dz*(T_p-T_{amb})-\epsilon*\sigma*(T_p^4-T_{amb}^4)*P_{rec}*dz\)</span></p>
+<p>Avec <span class="math notranslate nohighlight">\(\dot{m}\)</span> le débit massique en kg/s, <span class="math notranslate nohighlight">\(h(z)\)</span> l’enthalpie du fluide en J/kg, <span class="math notranslate nohighlight">\(\eta_{opt}\)</span> l’efficacité optique, <span class="math notranslate nohighlight">\(\alpha\)</span> le coefficient d’absorption solaire, DNI l’irradiation normal direct, <span class="math notranslate nohighlight">\(l_c\)</span> la largeur d’ouverture du collecteur,<span class="math notranslate nohighlight">\(U_{ext}\)</span> le coefficient de pertes thermiques du récepteurs en W/m².K,<span class="math notranslate nohighlight">\(P_{rec}\)</span> le périmètre du récepteur, <span class="math notranslate nohighlight">\(\epsilon\)</span> l’émission thermique de la paroi, <span class="math notranslate nohighlight">\(T_p\)</span> la température de paroi en K, <span class="math notranslate nohighlight">\(T_{amb}\)</span> la température extérieure en K, <span class="math notranslate nohighlight">\(\sigma\)</span> la constante de Boltzmann.</p>
+<p>Pour obtenir la température de paroi, il est nécessaire de faire un autre bilan thermique sur la paroi. Cette méthode étant assez lourde, les constructeurs fournissent des coefficients de perte. Ces coefficients de perte sont en général donnés pour un module entier.</p>
+<p>Avec l’utilisation de bilan sur le module, l’équation s’écrit alors:</p>
+<p><span class="math notranslate nohighlight">\(\dot{m}*(h_{out}-h_{in})= \eta_{opt}*\alpha*DNI*A_{module}-\dot{q}_{pertes}\)</span>,</p>
+<p>avec <span class="math notranslate nohighlight">\(\dot{q}_{pertes} = a_1 * (\frac{T_{in}+T_{out}}{2}-T_{amb})+a_2*(\frac{T_{in}+T_{out}}{2}-T_{amb})^2+a_3*(\frac{T_{in}+T_{out}}{2}-T_{amb})^3+a_4*(\frac{T_{in}+T_{out}}{2}-T_{amb})^4\)</span></p>
+<p>Une résolution précise consiste alors à:</p>
+<ol class="simple">
+<li><p>Imposer le débit et en déduire la température</p></li>
+<li><p>Imposer la température et en déduire le débit</p></li>
+</ol>
+<p>Il est possible d’écrire <span class="math notranslate nohighlight">\(h=C_p(T)*T\)</span>, puis de résoudre, néanmoins cela reste complexe. Une approximation classique serait de prendre <span class="math notranslate nohighlight">\(C_p=constante\)</span> sur le module (à la température d’entrée?).</p>
+<p>Ensuite, il est nécessaire de répéter ce processus sur la ligne de module; ce faisant, prendre la température d’entrée d’un module comme celle de sortie de l’autre.</p>
+</div>
+<div class="section" id="bilan-0d">
+<h3>Bilan 0D<a class="headerlink" href="#bilan-0d" title="Permalink to this headline">¶</a></h3>
+<p>Un bilan thermique sur le récepteur donne: <span class="math notranslate nohighlight">\(P_{in} = P_{utile} + P_{pertes}\)</span>, avec <span class="math notranslate nohighlight">\(P_{in}\)</span> la puissance en entrée, <span class="math notranslate nohighlight">\(P_{utile}\)</span> la puissance récupérée dans le fluide et <span class="math notranslate nohighlight">\(P_{pertes}\)</span> les pertes thermiques.</p>
+<div class="section" id="la-puissance-en-entree-p-in">
+<h4>La puissance en entrée <span class="math notranslate nohighlight">\(P_{in}\)</span><a class="headerlink" href="#la-puissance-en-entree-p-in" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(P_{in} = DNI*\eta_{opt}*A_{collecteur}\)</span>, avec DNI la <em>Direct Normal Irradiation</em> ou encore Irradiation normale direct en W/m², <span class="math notranslate nohighlight">\(\eta_{opt}\)</span> l’efficacité optique comme décrite ci-dessus et <span class="math notranslate nohighlight">\(A_{collecteur}\)</span> la surface du collecteur.</p>
+</div>
+<div class="section" id="la-puissance-utile-p-utile">
+<h4>La puissance utile <span class="math notranslate nohighlight">\(P_{utile}\)</span><a class="headerlink" href="#la-puissance-utile-p-utile" title="Permalink to this headline">¶</a></h4>
+<p>Cela correspond à l’énergie récupérée par le fluide. Elle s’écrit <span class="math notranslate nohighlight">\(P_{utile} = \dot{m}*(h_{out}-h_{in})\)</span>, avec <span class="math notranslate nohighlight">\(\dot{m}\)</span></p>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -284,21 +539,43 @@
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="LowT.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Basses Températures</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="HighT.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">La Concentration Ponctuelle</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By SolarPunk 73<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -307,11 +584,9 @@
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>
