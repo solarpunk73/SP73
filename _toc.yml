@@ -1,27 +1,21 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-
-- file: intro
-  numbered: false
-- part: Idées & Association
-  numbered: false
+format: jb-book
+root: intro
+parts:
+- caption: "Id\xE9es & Association"
   chapters:
   - file: Part1/SolarPunk
   - file: Part1/Asso
-- part: Objectifs, réalisations & idées
-  numbered: false
+- caption: "Objectifs, r\xE9alisations & id\xE9es"
   chapters:
   - file: Part2/SolarBeer
   - file: Part2/CSPRecycled
   - file: Part2/SolairePassif
   - file: Part2/PV&ChargeBasique
-- part: Introduction à l'Energie solaire
-  numbered: false
+- caption: "Introduction \xE0 l'Energie solaire"
   chapters:
   - file: Part3/IntroEnergie
   - file: Part3/EmplacementSoleil
   - file: Part3/Irradiation
   - file: Part3/LowT
-  - file: Part3/MediumT
+  - file: Part3/mediumT
   - file: Part3/HighT

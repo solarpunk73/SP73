@@ -38,31 +38,180 @@
 
 # ### Vecteur solaire
 
-# Le vecteur solaire est un vecteur pointant vers le soleil. Sans cette base et pour cette définition de l'azimuth, il s'exprime comme:
+# Le vecteur solaire est un vecteur pointant vers le soleil. Dans cette base et pour cette définition de l'azimuth, il s'exprime comme:
 
 # $$
 # \vec{s}= \sin(\alpha) \times \cos(\gamma) \vec{u_x} + \cos(\alpha) \times \cos(\gamma) \vec{u_y} + \sin(\gamma) \vec{u_z}
 # $$
 
-# In[32]:
+# **Démonstration:** Cela peut se démontrer en utilisant deux matrices de rotation: 
+# 1. Une première matrice  $P_{B_0}^{B_1}$ correspondant à une matrice de rotation d'un angle $-\alpha$ autour de l'axe z
+# 2. Une deuxième matrice de rotation $P_{B_1}^{B_2}$ correspondant à une matrice de rotation d'un angle $\gamma$ autour de l'axe x.
+# 
+# Ces dernières s'écrivent donc: $P_{B_0}^{B_1} = \begin{pmatrix} \cos(\alpha) & \sin(\alpha) & 0 \\ -\sin(\alpha) & \cos(\alpha) & 0 \\ 0 & 0 & 1 \end{pmatrix}$ et $P_{B_1}^{B_2} = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos(\gamma) & -\sin(\gamma) \\ 0 & \sin(\gamma) & \cos(\gamma) \end{pmatrix}$
+# 
+# Dans la base $B_2$, le vecteur solaire s'écrit: $\vec{s}_{B_2} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$. La formule de changement de base s'écrit: $\vec{s}_{B_0} = P_{B_0}^{B_2} . \vec{s}_{B_2}$. On trouve alors le résultat.
 
+# In[1]:
+
+
+#Le code présenté ici est détaillé dans la suite; il est néanmoins pratique à copier-coller, offrant la possibilité
+# de conna^tre la position du soleil en instantané ;)
+
+from math import sin, cos, tan,asin, pi,atan2
+import numpy as np
+import copy as cp
+import datetime
 
 class solarVector:
-    def __init__(self,x,y,z):
+    def __init__(self,x=0.,y=0.,z=1.,lat = pi/4,long = 5*pi/180):
         self.x=x
         self.y=y
         self.z=z
-    def printVec(self):
-        print("x--->"+str(self.x)+"\n y--->" +str(self.y)+"\n z---> "+str(self.z))
-    def prod(self,vec):
-        return (self.x)
+        self.lat=lat #latitude
+        self.long = long
+        self.azim=0.
+        self.elev=0.
+        self.declin=0
+        self.hourAngle=0
+        self.h=0
+        self.calc()
+    
+    def calc(self):
+        (self.azim,self.elev)=azimElevFromSolarVector(self)
+        (self.declin,self.hourAngle)=declinHourFromSolarVector(self,self.lat)
+        self.h = 12+self.hourAngle*180/(pi*15)
+        
+    def __str__(self):
+        self.calc()
+        rez="x--->"+str(self.x)+", y--->" +str(self.y)+", z---> "+str(self.z)+"\n"
+        rez+="azimuth -> " + str(self.azim*180/pi) +"° , elevation -> "+str(self.elev*180/pi)+"° \n"
+        rez+="Declination -> " + str(self.declin*180/pi) +"°, hour angle -> " +str(self.hourAngle*180/pi)+"° \n"
+        return rez
+        
+    def npArr(self):
+        return np.array([self.x,self.y,self.z])
+    
+    def printAzimElev(self):
+        print('azimuth --->' +str(self.azim*180/pi) +"°  , elevation---> "+str(self.elev*180/pi)+"°")
+        
+    def printDeclinHour(self):
+        print('declinaison --->' +str(self.azim*180/pi) +"°  , Angle horaire ---> "+str(self.elev*180/pi)+"°")
+        
+    def azimElev(self):
+        self.calc()
+        return (self.azim,self.elev)
+    
+    def setAzimElev(self,azim,elev):
+        lol = solarVectorFromAzimElev(azim,elev)
+        [self.x,self.y,self.z] = [lol.x,lol.y,lol.z]
+        self.calc()
+    
+    def setDeclinHour(self,declin, hour):
+        lol = solarVectorFromDeclinHour(declin,hour,self.lat)
+        [self.x,self.y,self.z] = [lol.x,lol.y,lol.z]
+        self.calc()
+    
+    def declinHour(self):
+        self.calc()
+        return (self.declin,self.hour)
+    
+    def now(self):
+        dateNow = datetime.datetime.utcnow()
+        lol = sunPosPSA(dateNow,self.long,self.lat)
+        [self.x,self.y,self.z] = [lol.x,lol.y,lol.z]
+        self.calc()
 
 def solarVectorFromAzimElev(azim,elev):
     sx = sin(azim) * cos(elev);
     sy = cos(azim) * cos(elev);
     sz = sin(elev);
     return solarVector(sx,sy,sz);
+
+
+def azimElevFromSolarVector(s):
+    elev = asin(s.z);
+    interm = asin(s.x / cos(elev)-0.00000000000002);
+    if (s.y>0):
+        if (s.x > 0):
+            azim = interm;
+        else:
+            azim = 2 * pi + interm;
+    else:
+        azim = pi - interm;
+    return (azim,elev)
+
+def solarDeclinationByDayNumber(day):
+    return asin(sin(-23.44*pi/180.)*cos(0.98565*pi/180*(N+1)+1.914*pi/180.*sin(0.98565*pi/180.*(N-2))))
+
+def solarVectorFromDeclinHour(declination,hourAngle,lat):
+    sx = -cos(declination) * sin(hourAngle);
+    sy = sin(declination) * cos(lat) - cos(declination) * sin(lat) * cos(hourAngle);
+    sz = sin(declination) * sin(lat) + cos(declination) * cos(lat) * cos(hourAngle);
+    return solarVector(sx,sy,sz)
+
+def declinHourFromSolarVector(sunvec,lat) :
+    declin = asin((sunvec.y+sunvec.z * tan(lat)) / (cos(lat) + sin(lat) * tan(lat)));
+    interm = -asin(sunvec.x / cos(declin));
+    test = (sin(declin) * cos(lat) - sunvec.y) / (cos(declin) * sin(lat));
+    if (abs(cos(interm) - test) < 0.001):
+        hour = interm;
+    elif (sunvec.x < 0):
+        hour = pi - interm;
+    else:
+        hour = -pi - interm;
+    return (declin,hour)
+
+#Algorithme PSA, updaté avec les dernières valeurs de Blanco et al.
+def sunPosPSA(dateUTC,  dLongitude,  dLatitude):
+    [iYear, iMonth,iDay, dHours, dMinutes,  dSeconds] = [dateUTC.year,dateUTC.month,dateUTC.day,dateUTC.hour,dateUTC.minute,dateUTC.second]
+    dDecimalHours = dHours + (dMinutes+ dSeconds / 60.0) / 60.0;
+    # Calculate current Julian Day
+    liAux1 = (iMonth - 14) / 12;
+    liAux2 = (1461 * (iYear + 4800 + liAux1)) / 4 + (367 * (iMonth- 2 - 12 * liAux1)) / 12          - (3 * ((iYear + 4900+ liAux1) / 100)) / 4 +iDay - 32075;
+    dJulianDate = (liAux2)-0.5 + dDecimalHours / 24.0;
+    # Calculate difference between current Julian Day and JD 2451545.0 
+    dElapsedJulianDays = dJulianDate - 2451545.0;
     
+
+    # Calculate ecliptic coordinates (ecliptic longitude and obliquity of the 
+    # ecliptic in radians but without limiting the angle to be less than 2*Pi 
+    # (i.e., the result may be greater than 2*Pi)
+    
+    dOmega = 2.267127827 - 9.300339267*pow(10,-4) * dElapsedJulianDays;
+    dMeanLongitude = 4.895036035 + 0.01720279602 * dElapsedJulianDays; # Radians
+    dMeanAnomaly = 6.239468336 + 0.01720200135 * dElapsedJulianDays;
+    dEclipticLongitude = dMeanLongitude + 0.03338320972 * sin(dMeanAnomaly)             + 0.0003497596876 * sin(2 * dMeanAnomaly) - 0.0001544353226             - 8.689729360*pow(10,-6) * sin(dOmega);
+    dEclipticObliquity = 0.4090904909 - 6.213605399*pow(10,-9) * dElapsedJulianDays             + 4.418094944*pow(10,-5) * cos(dOmega);
+
+
+    # Calculate celestial coordinates ( right ascension and declination ) in radians 
+    # but without limiting the angle to be less than 2*Pi (i.e., the result may be 
+    # greater than 2*Pi)
+    
+    dSin_EclipticLongitude = sin(dEclipticLongitude);
+    dY = cos(dEclipticObliquity) * dSin_EclipticLongitude;
+    dX = cos(dEclipticLongitude);
+    dRightAscension = atan2(dY, dX);
+    if (dRightAscension < 0.0):
+        dRightAscension = dRightAscension + 2*pi;
+    dDeclination = asin(sin(dEclipticObliquity) * dSin_EclipticLongitude);
+    
+
+    # Calculate solar vector
+    
+    dGreenwichMeanSiderealTime = 6.697096103 +0.06570984737 * dElapsedJulianDays+ dDecimalHours;
+    dLocalMeanSiderealTime = (dGreenwichMeanSiderealTime * 15 * pi / 180.+ dLongitude) ;
+    dHourAngle = dLocalMeanSiderealTime - dRightAscension;
+    return solarVectorFromDeclinHour(dDeclination, dHourAngle, dLatitude);
+
+
+# In[2]:
+
+
+test = solarVector()
+test.now()
+print(test)
 
 
 # ## Latitude, déclinaison et angle horaire - Systèmes Equatoriales
@@ -76,7 +225,7 @@ def solarVectorFromAzimElev(azim,elev):
 # La déclinaison ($\delta$) correspond à l'inclinaison de l'axe de la terre. Ce dernier varie de -23.4° au solstice d'hiver à 23.4° au solstice d'été. Cet angle peut être relié au jour de l'année via de nombreuses corrélations, la plus reconnue étant celle de l'algorithme PSA.
 # En voici une très proche.
 
-# In[20]:
+# In[3]:
 
 
 import pandas as pd
@@ -91,7 +240,7 @@ cf.go_offline(connected=False)
 init_notebook_mode(connected=False)
 
 
-# In[21]:
+# In[4]:
 
 
 from math import cos, sin
@@ -115,7 +264,7 @@ dfYear.iplot(kind='scatter',x="day",y="declination", title="Déclinaison solaire
 # 
 # Dans cette équation, le temps est en UTC ou heure solaire. En France, (pour l'instant?), l'heure d'été est UTC+2 et hiver UTC+1, c'est-à-dire qu'en hiver le soleil est au sud à 13h et en été à 14h.
 
-# In[22]:
+# In[9]:
 
 
 from math import pi
@@ -126,7 +275,7 @@ dfDay.iplot(x='hour',y='omega', title = "Angle horaire sur 24 h", xTitle="hour",
 
 # L'heure maximale $\omega_{max}$, càd l'heure à laquelle le soleil se couche, s'écrit $\omega_{max} = \arccos(-\tan(\phi) \times \tan(\delta) )$
 
-# In[23]:
+# In[10]:
 
 
 from math import acos, tan, pi
@@ -134,7 +283,7 @@ def omegaMax(day,lat):
     return acos(-tan(lat)*tan(solarDeclinationByDayNumber(day)))
 
 
-# In[24]:
+# In[11]:
 
 
 phi=45.564601 * 3.14159/180;
@@ -158,7 +307,7 @@ dfYear.iplot(x="day",y="hourMax",secondary_y="derivHourMax",
 # + (\sin(\delta) \times \sin(\phi) + \cos(\delta) \times \cos(\omega) \times \cos(\phi) ) \times \vec{u_z}
 # $$
 
-# In[25]:
+# In[12]:
 
 
 def solarVectorFromDeclinHour(declination,hourAngle,lat):
@@ -174,7 +323,7 @@ def solarVectorFromDeclinHour(declination,hourAngle,lat):
 
 # ### Du vecteur solaire à l'azimuth et l'élévation
 
-# In[26]:
+# In[13]:
 
 
 from math import asin, cos, pi
@@ -193,7 +342,7 @@ def azimElevFromSolarVector(s):
 
 # ### Du vecteur solaire à la déclinaison et l'angle horaire
 
-# In[27]:
+# In[18]:
 
 
 from math import asin, cos, sin, tan
@@ -204,15 +353,15 @@ def declinHourFromSolarVector(s,lat):
     if (abs(cos(interm) - test) < 0.001):
         hour = interm;
     elif (s.x < 0):
-        hour = Pi - interm;
+        hour = pi - interm;
     else:
-        hour = -Pi - interm;
+        hour = -pi - interm;
     return(declin, hour)
 
 
 # ### D'un système à l'autre
 
-# In[28]:
+# In[19]:
 
 
 def azimElevFromDeclinHour(declin,hour,lat):
@@ -220,7 +369,7 @@ def azimElevFromDeclinHour(declin,hour,lat):
     return azimElevFromSolarVector(s)
 
 
-# In[29]:
+# In[20]:
 
 
 def declinHourFromAzimElev(azim,elev,lat):
@@ -234,7 +383,7 @@ def declinHourFromAzimElev(azim,elev,lat):
 
 # ### Azimuth et élévation
 
-# In[30]:
+# In[21]:
 
 
 from math import pi
@@ -251,7 +400,7 @@ dfDay.iplot(kind='scatter',mode='markers',size=10,symbol='x', x="azimuth", y="el
             title = "Azimuth vs Elevation during a summer day", xTitle= "Azimuth (°)", yTitle="Elevation (°)", text="hour")
 
 
-# In[31]:
+# In[22]:
 
 
 from math import pi
@@ -271,14 +420,224 @@ def plotAzimVsElev(day):
 
 # Lorsque l'élévation est négative, cela correspond aux heures à laquelle le soleil ne s'est pas encore levé.
 
-# In[18]:
+# In[ ]:
 
 
 0.712*0.712+0.1*0.1+0.14*0.14
 
 
+# ### Algorithme PSA: connaître la localisation du soleil 
+
+# L'algorithme développé par le PSA pour la localisation du soleil est de très bonne qualité, précis à quelques arcsecondes près. En créant un solarVector test, et en appelant test.now(), vous stockerez dans test la réelle position du soleil au moment précis où vous l'appeler. L'utilisation de print(test) vous donnera toutes les informations angulaires sur le soleil à l'instant où vous avez appelé la méthode now().
+# 
+# Il est intéressant également de se demander à quelle heure locale arrivera le soleil au sud. 
+
+# ## Bonus: Algorithme pour la position de la lune
+
 # In[ ]:
 
 
+def JulianDay (date, month, year, UT)
+{
 
+if (month<=2):
+    month=month+12;
+    year=year-1;
+return (int)(365.25*year) + (int)(30.6001*(month+1)) - 15 + 1720996.5 + date + UT/24.0;
+}
+
+
+# Algorithme trouvé sur https://www.mathworks.com/matlabcentral/fileexchange/23475-moon-position et converti en python.
+
+# In[ ]:
+
+
+from math import sin,cos,pi
+
+
+def moonpostod(T)  // Moon Position TOD
+{
+    
+
+// Argument Multiple of D column, page 309-310, Table 45.A
+
+    argd =[0, 2, 2, 0, 0, 0, 2, 2, 2, 2,\
+         0, 1, 0, 2, 0, 0, 4, 0, 4, 2,\
+         2, 1, 1, 2, 2, 4, 2, 0, 2, 2,\
+         1, 2, 0, 0, 2, 2, 2, 4, 0, 3,\
+         2, 4, 0, 2, 2, 2, 4, 0, 4, 1,\
+         2, 0, 1, 3, 4, 2, 0, 1, 2, 2];
+
+// Argument Multiple of M column, page 309-310, Table 45.A
+       
+    argm = [0, 0, 0, 0, 1, 0, 0,-1, 0,-1,\
+         1, 0, 1, 0, 0, 0, 0, 0, 0, 1,\
+         1, 0, 1,-1, 0, 0, 0, 1, 0,-1,\
+         0,-2, 1, 2,-2, 0, 0,-1, 0, 0,\
+         1,-1, 2, 2, 1,-1, 0, 0,-1, 0,\
+         1, 0, 1, 0, 0,-1, 2, 1, 0, 0];
+
+// All the 1's and -1's of argm, used for M correction
+                 
+    argm1 = [0, 0, 0, 0, 1, 0, 0,-1, 0,-1,\
+         1, 0, 1, 0, 0, 0, 0, 0, 0, 1,\
+         1, 0, 1,-1, 0, 0, 0, 1, 0,-1,\
+         0, 0, 1, 0, 0, 0, 0,-1, 0, 0,\
+         1,-1, 0, 0, 1,-1, 0, 0,-1, 0,\
+         1, 0, 1, 0, 0,-1, 0, 1, 0, 0];
+
+// All the 2's and -2's of argm, used for 2M correction
+               
+    argm2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
+         0,-2, 0, 2,-2, 0, 0, 0, 0, 0,\
+         0, 0, 2, 2, 0, 0, 0, 0, 0, 0,\
+         0, 0, 0, 0, 0, 0, 2, 0, 0, 0];
+
+// Argument Multiple of M' column, page 309-310, Table 45.A
+               
+    argmp = [1,-1, 0, 2, 0, 0,-2,-1, 1, 0,        -1, 0, 1, 0, 1, 1,-1, 3,-2,-1,         0,-1, 0, 1, 2, 0,-3,-2,-1,-2,         1, 0, 2, 0,-1, 1, 0,-1, 2,-1,         1,-2,-1,-1,-2, 0, 1, 4, 0,-2,         0, 2, 1,-2,-3, 2, 1,-1, 3,-1];
+
+(/, Argument, Multiple, of, F, column,, page, 309-310,, Table, 45.A)
+                 
+    argf = [0, 0, 0, 0, 0, 2, 0, 0, 0, 0,         0, 0, 0,-2, 2,-2, 0, 0, 0, 0,         0, 0, 0, 0, 0, 0, 0, 0, 2, 0,         0, 0, 0, 0, 0,-2, 2, 0, 2, 0,         0, 0, 0, 0, 0,-2, 0, 0, 0, 0,        -2,-2, 0, 0, 0, 0, 0, 0, 0,-2];                 
+
+(/, Coefficient, of, the, sine, of, the, argument, column,, page, 309-310,, Table, 45.A)
+                
+    args = [6288774, 1274027, 658314, 213618, -185116,         -114332,   58793,  57066,  53322,   45758,          -40923,  -34720, -30383,  15327,  -12528,           10980,   10675,  10034,   8548,   -7888,           -6766,   -5163,   4987,   4036,    3994,            3861,    3665,  -2689,  -2602,    2390,           -2348,    2236,  -2120,  -2069,    2048,           -1773,   -1595,   1215,  -1110,    -892,            -810,     759,   -713,   -700,     691,             596,     549,    537,    520,    -487,            -399,    -381,    351,   -340,     330,             327,    -323,    299,    294,       0];                
+
+(/, Coefficient, of, the, cosine, of, the, argument, column,, page, 309-310,, Table, 45.A)
+                     
+    argc = [-20905355, -3699111, -2955968, -569925,   48888,             -3149,   246158,  -152138, -170733, -204586,           -129620,   108743,   104755,   10321,       0,             79661,   -34782,   -23210,  -21636,   24208,             30824,    -8379,   -16675,  -12831,  -10445,            -11650,    14403,    -7003,       0,   10056,              6322,    -9884,     5751,       0,   -4950,              4130,        0,    -3958,       0,    3258,              2616,    -1897,    -2117,    2354,       0,                 0,    -1423,    -1117,   -1571,   -1739,                 0,    -4421,        0,       0,       0,                 0,     1165,        0,       0,    8752];
+
+(/, Coefficient, of, the, sine, of, the, argument,, page, 311,, Table, 45.B)
+                         
+    argb = [5128122, 280602, 277693, 173237, 55413,           46271,  32573,  17198,   9266,  8822,            8216,   4324,   4200,  -3359,  2463,            2211,   2065,  -1870,   1828, -1794,           -1749,  -1565,  -1491,  -1475, -1410,           -1344,  -1335,   1107,   1021,   833,             777,    671,    607,    596,   491,            -451,    439,    422,    421,  -366,            -351,    331,    315,    302,  -283,            -229,    223,    223,   -220,  -220,            -185,    181,   -177,    176,   166,            -164,    132,   -119,    115,   107];                         
+
+(/, Argument, Multiple, of, D, column,, page, 311,, Table, 45.B)
+                    
+    bargd = [0, 0, 0, 2, 2, 2, 2, 0, 2, 0,         2, 2, 2, 2, 2, 2, 2, 0, 4, 0,         0, 0, 1, 0, 0, 0, 1, 0, 4, 4,         0, 4, 2, 2, 2, 2, 0, 2, 2, 2,         2, 4, 2, 2, 0, 2, 1, 1, 0, 2,         1, 2, 0, 4, 4, 1, 4, 1, 4, 2];
+
+(/, Argument, Multiple, of, M, column,, page, 311,, Table, 45.B)
+                  
+    bargm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,             -1, 0, 0, 1,-1,-1,-1, 1, 0, 1,         0, 1, 0, 1, 1, 1, 0, 0, 0, 0,         0, 0, 0, 0,-1, 0, 0, 0, 0, 1,         1, 0,-1,-2, 0, 1, 1, 1, 1, 1,         0,-1, 1, 0,-1, 0, 0, 0,-1,-2];
+
+(/, All, the, 1's, and, -1's, of, bargm,, used, for, M, correction)
+                  
+    bargm1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,        -1, 0, 0, 1,-1,-1,-1, 1, 0, 1,         0, 1, 0, 1, 1, 1, 0, 0, 0, 0,         0, 0, 0, 0,-1, 0, 0, 0, 0, 1,         1, 0,-1, 0, 0, 1, 1, 1, 1, 1,         0,-1, 1, 0,-1, 0, 0, 0,-1, 0];
+
+(/, All, the, 2's, and, -2's, of, bargm,, used, for, 2M, correction)
+                   
+    bargm2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,         0, 0, 0,-2, 0, 0, 0, 0, 0, 0,         0, 0, 0, 0, 0, 0, 0, 0, 0,-2];
+
+(/, Argument, Multiple, of, M', column,, page, 311,, Table, 45.B)
+                   
+    bargmp = [0, 1, 1, 0,-1,-1, 0, 2, 1, 2,              0,-2, 1, 0,-1, 0,-1,-1,-1, 0,         0,-1, 0, 1, 1, 0, 0, 3, 0,-1,         1,-2, 0, 2, 1,-2, 3, 2,-3,-1,         0, 0, 1, 0, 1, 1, 0, 0,-2,-1,         1,-2, 2,-2,-1, 1, 1,-1, 0, 0];
+
+(/, Argument, Multiple, of, F, column,, page, 311,, Table, 45.B)
+                   
+    bargf = [1, 1,-1,-1, 1,-1, 1, 1,-1,-1,             -1,-1, 1,-1, 1, 1,-1,-1,-1, 1,         3, 1, 1, 1,-1,-1,-1, 1,-1, 1,        -3, 1,-3,-1,-1, 1,-1, 1,-1, 1,         1, 1, 1,-1, 3,-1,-1, 1,-1,-1,         1,-1, 1,-1,-1,-1,-1,-1,-1, 1];                    
+    
+(/, Find, position, in, mean, of, date, (MOD))
+    
+    lp = 218.3164591        \         // Eqn. (45.1) pg 308
+         + T * (481267.88134236         + T * (-0.0013268         + T * (1.0 / 538841.0         + T * (-1.0 / 65194000.0))));
+    lp = lp%360.0;
+    if( lp < 0.0 ) 
+        lp += 360.0;
+    
+    d = 297.8502042         \         // Eqn. (45.2) pg 308
+        + T * (445267.1115168        + T * (-0.0016300        + T * (1.0 / 545868.0        + T * (-1.0 / 113065000))));
+    d = d%360.0;
+    if( d < 0.0 )
+        d += 360.0;
+    
+    m = 357.5291092       \           // Eqn. (45.3) pg 308
+        + T * (35999.0502909        + T * (-0.0001536        + T * (1.0 / 24490000.0)));
+    m = m%360.0;
+    if( m < 0.0 )
+        m += 360.0;
+
+    mp = 134.9634114        \         // Eqn. (45.4) pg 308
+         + T * (477198.8676313         + T * (0.0089970         + T * (1.0 / 69699.0         + T * (-1.0 / 14712000.0))));
+    mp = mp%360.0;
+    if( mp < 0.0 ) mp += 360.0;
+    
+    f = 93.2720993        \           // Eqn. (45.5) pg 308
+        + T * (483202.0175273        + T * (-0.0034029        + T * (-1.0 / 3526000.0        + T * (1.0 / 863310000.0))));
+    f = f%360.0;
+    if( f < 0.0 )
+        f += 360.0;
+    
+    a1 = 119.75 + T * 131.849;       // Eqns. middle pg 308
+    a2 =  53.09 + T * 479264.290;
+    a3 = 313.45 + T * 481266.484;
+    a1 = a1%360.0;
+    a2 = a2%360.0;
+    a3 = a3%360.0;
+    if( a1 < 0.0 )
+        a1 += 360.0;
+    if( a2 < 0.0 )
+        a2 += 360.0;
+    if( a3 < 0.0 )
+        a3 += 360.0;
+    
+    e = 1.0 + T * (-0.002516 - 0.0000074 * T);  // Eqn. (45.6) pg 308
+    e2 = e * e;
+    
+    suml = 0.0;
+    sumr = 0.0;
+    sumb = 0.0;
+    
+    for i in range(60):                        // Sum of terms on pages 309 - 311
+        arg = argd[i] * d + argm[i] * m + argmp[i]* mp + argf[i] * f;
+        if( argm1[i] ) {                          // Correction for M
+            suml = suml + args[i] * sind(arg) * e;
+            sumr = sumr + argc[i] * cosd(arg) * e;
+        } else if ( argm2[i] ) {                  // Correction for 2M
+            suml = suml + args[i] * sind(arg) * e2;
+            sumr = sumr + argc[i] * cosd(arg) * e2;
+        } else {
+            suml = suml + args[i] * sind(arg);
+            sumr = sumr + argc[i] * cosd(arg);
+        }
+        arg = bargd[i] * d + bargm[i] * m + bargmp[i]* mp + bargf[i] * f;        
+        if( bargm1[i] ) {                          // Correction for M
+            sumb = sumb + argb[i] * sind(arg) * e;
+        } else if ( bargm2[i] ) {                  // Correction for 2M
+            sumb = sumb + argb[i] * sind(arg) * e2;
+        } else {
+            sumb = sumb + argb[i] * sind(arg);
+        }
+    
+    suml = suml + 3958.0 * sind(a1)   \            // Eqn. top of pg 312
+                + 1962.0 * sind(lp - f)                +  318.0 * sind(a2);
+    
+    sumb = sumb - 2235.0 * sind(lp)    \           // Eqn. top of pg 312
+                +  382.0 * sind(a3)                +  175.0 * sind(a1 - f)                +  175.0 * sind(a1 + f)                +  127.0 * sind(lp - mp)                -  115.0 * sind(lp + mp);
+    
+    lambd = lp + suml / 1e6;      // Coordinate calculations middle page 312
+    beta   =      sumb / 1e6;
+    *delta  = 385000.56 + sumr / 1e3;
+
+    eps = (23.0 + 26.0 / 60.0 + 21.448 / 3600.0 )  // Eqn. (21.1) pg 135
+          + T * ( -46.8150 / 3600.0
+          + T * ( -0.00059 / 3600.0
+          + T * ( 0.001813 / 3600.0)));
+
+    if( nutationhigh ):
+        moonnutation(T, &dpsi, &deps);      // Use the complete Table 21.A pgs 133 - 134
+    else: 
+        moonnutationlow(T, &dpsi, &deps);   // Use lower precision formulae pg 132
+    
+    lambd += dpsi;                // Correction bottom of page 312
+    eps += deps;                   // Correction top of page 313
+    
+    ra = atan2( sind(lambd) * cosd(eps) - tand(beta) * sind(eps), cosd(lambd) );  // Eqn. (12.3)
+    if( ra < 0.0 ) : 
+        ra += pi + pi;
+    
+    dec = asin( sind(beta) * cosd(eps) + cosd(beta) * sind(eps) * sind(lambd) );  // Eqn. (12.4)
+}
 

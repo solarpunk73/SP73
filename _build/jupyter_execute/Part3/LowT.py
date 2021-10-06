@@ -15,7 +15,7 @@
 
 # ![Piscine](../images/piscine.PNG)
 
-# ```{sidebar}2. Collecteurs plans
+# ```{sidebar} 2. Collecteurs plans
 # Une vitre protégeant un absorbeur noir, derrière lequel passe un tuyau dans lequel cricule le fluide caloporteur. La vitre bloque les pertes et permet une meilleure montée en température.
 # ```
 
